@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias - E-Sports Tournaments</title>
+  <style>
+    /* RESET BÁSICO */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* ESTILOS GLOBALES */
+    body {
+      font-family: Arial, sans-serif;
+      color: #1DCD9F;
+      line-height: 1.6;
+      padding-top: 80px;
+      /* Fondo con imagen y transparencia */
+      background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), 
+                        url(Img_Noticias/Noticias.png);
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+    }
+    
+    /* KEYFRAMES DE ANIMACIÓN */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes underline {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    
+    /* BARRA DE NAVEGACIÓN FIJA */
+    nav {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 1rem;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(5px);
+      border-bottom: 1px solid #1DCD9F;
+    }
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+    }
+    
+    nav ul li {
+      margin: 0;
+    }
+    
+    nav ul li a {
+      color: #1DCD9F;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+      position: relative;
+      padding: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    nav ul li a:hover {
+      color: #169976;
+    }
+    
+    /* Animación de subrayado */
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: #1DCD9F;
+      transition: width 0.3s ease;
+    }
+    
+    nav ul li a:hover::after {
+      width: 100%;
+      animation: underline 0.3s ease forwards;
+    }
+    
+    nav ul li a.active {
+      color: #169976;
+    }
+    
+    nav ul li a.active::after {
+      width: 100%;
+    }
+    
+    /* TÍTULO DE LA PÁGINA */
+    .page-title {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .page-title h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      color: #1DCD9F;
+    }
+    
+    .page-title p {
+      font-size: 1.4rem;
+      color: #169976;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    /* CONTENEDOR DE TARJETAS DE NOTICIAS */
+    .news-container {
+      max-width: 1300px;
+      margin: 20px auto;
+      padding: 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2.5rem;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    /* TARJETA DE NOTICIA */
+    .news-card {
+      background-color: rgba(0, 0, 0, 0.7);
+      border: 2px solid #1DCD9F;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s ease;
+      backdrop-filter: blur(5px);
+      animation: fadeIn 0.6s ease-out;
+      animation-fill-mode: both;
+    }
+    
+    /* Animación escalonada para las tarjetas */
+    .news-card:nth-child(1) { animation-delay: 0.2s; }
+    .news-card:nth-child(2) { animation-delay: 0.4s; }
+    .news-card:nth-child(3) { animation-delay: 0.6s; }
+    .news-card:nth-child(4) { animation-delay: 0.8s; }
+    .news-card:nth-child(5) { animation-delay: 1s; }
+    
+    .news-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(29, 205, 159, 0.3);
+      border-color: #169976;
+    }
+    
+    .news-card img {
+      width: 100%;
+      height: 200px;
+      display: block;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    
+    .news-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .news-card .news-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .news-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.8rem;
+      color: #1DCD9F;
+      transition: color 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .news-card:hover h3 {
+      color: #169976;
+    }
+    
+    .news-card p {
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      color: #169976;
+      line-height: 1.7;
+      flex: 1;
+    }
+    
+    .news-date {
+      display: block;
+      font-size: 0.9rem;
+      color: #1DCD9F;
+      margin-bottom: 0.8rem;
+      text-align: right;
+    }
+    
+    /* FOOTER */
+    footer {
+      background-color: rgba(0, 0, 0, 0.9);
+      color: #1DCD9F;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      font-size: 1rem;
+      margin-top: 3rem;
+      backdrop-filter: blur(5px);
+      border-top: 1px solid #1DCD9F;
+    }
+    
+    footer p {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav ul {
+        gap: 1.2rem;
+      }
+      
+      .page-title h1 {
+        font-size: 2.3rem;
+      }
+      
+      .page-title p {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      
+      .news-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+        gap: 2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .page-title h1 {
+        font-size: 2rem;
+      }
+      
+      .page-title p {
+        font-size: 1.1rem;
+      }
+      
+      nav ul li a {
+        font-size: 0.9rem;
+      }
+      
+      .news-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .news-card p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Barra de navegación fija -->
+  <nav>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="Pagina_Torneos.html">Torneos</a></li>
+      <li><a href="Pagina_Equipos.html">Equipos</a></li>
+      <li><a href="Pagina_Noticias.html" class="active">Noticias</a></li>
+    </ul>
+  </nav>
+  
+  <!-- Título de la página -->
+  <div class="page-title">
+    <h1>Noticias Actuales</h1>
+    <p>Lo último en E-Sports y Torneos</p>
+  </div>
+  
+  <!-- Contenedor de tarjetas de noticias -->
+  <div class="news-container">
+    <!-- Tarjeta de Noticia 1 -->
+    <div class="news-card">
+      <img src="Img_Noticias/actualizacion-9-eafc-25.jpeg" alt="Actualización de eSports">
+      <div class="news-content">
+        <span class="news-date">10 Mayo 2025</span>
+        <h3>La evolución de los eSports en 2025</h3>
+        <p>Descubre cómo las nuevas tecnologías y formatos están revolucionando el mundo de las competiciones en los eSports. Analizamos las tendencias que están marcando este año.</p>
+      </div>
+    </div>
+    
+    <!-- Tarjeta de Noticia 2 -->
+    <div class="news-card">
+      <img src="Img_Noticias/images.jpeg" alt="Torneo de CS:GO">
+      <div class="news-content">
+        <span class="news-date">8 Mayo 2025</span>
+        <h3>CS:GO: Grandes sorpresas en IEM Cologne</h3>
+        <p>El torneo IEM Cologne 2025 trae resultados inesperados y una competencia reñida en cada partida. Los equipos menos favoritos están dando la sorpresa.</p>
+      </div>
+    </div>
+    
+    <!-- Tarjeta de Noticia 3 -->
+    <div class="news-card">
+      <img src="Img_Noticias/The-International-llega-kilos_1399670021_515439_880x600.jpg" alt="The International de Dota 2">
+      <div class="news-content">
+        <span class="news-date">5 Mayo 2025</span>
+        <h3>The International: La batalla por el gran premio</h3>
+        <p>Los equipos se preparan para el evento insignia de Dota 2, con cambios en el formato y premios históricos. Este año el premio podría superar los $40 millones.</p>
+      </div>
+    </div>
+    
+    <!-- Tarjeta de Noticia 4 -->
+    <div class="news-card">
+      <img src="Img_Noticias/117062ea-00f6-49a7-bdb8-b7e29d41bb9c.jpg" alt="Actualizaciones en Mobile Legends">
+      <div class="news-content">
+        <span class="news-date">3 Mayo 2025</span>
+        <h3>Novedades en Mobile Legends 2025</h3>
+        <p>Descubre los nuevos campeones, balanceos y estrategias que están definiendo la próxima temporada competitiva. Los cambios prometen revolucionar el meta.</p>
+      </div>
+    </div>
+    
+    <!-- Tarjeta de Noticia 5 -->
+    <div class="news-card">
+      <img src="Img_Noticias/images (1).jpeg" alt="EVO Championship Series">
+      <div class="news-content">
+        <span class="news-date">30 Abril 2025</span>
+        <h3>EVO 2025: Innovación en Juegos de Lucha</h3>
+        <p>La EVO Championship Series presenta un nuevo formato y tecnologías de transmisión que llevan la experiencia de los juegos de lucha a un nuevo nivel.</p>
+      </div>
+    </div>
+    
+    <!-- Tarjeta de Noticia 6 -->
+    <div class="news-card">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800" alt="Nuevo juego competitivo">
+      <div class="news-content">
+        <span class="news-date">28 Abril 2025</span>
+        <h3>Nuevo juego entra en la escena competitiva</h3>
+        <p>Un nuevo título ha sido anunciado como juego oficial para torneos profesionales. Descubre cómo está cambiando el panorama de los eSports.</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 E-Sports Tournaments. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    // Activar animación al hacer scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const newsCards = document.querySelectorAll('.news-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animationPlayState = 'running';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      
+      newsCards.forEach(card => {
+        card.style.animationPlayState = 'paused';
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>
