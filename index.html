@@ -29,7 +29,7 @@
        Global nav: 64px y Secondary nav: 48px (en total 112px) */
     body {
       padding-top: 112px;  /* 64 + 48 */
-      margin-right: 300px; /* si usas aside fijo */
+      margin-right: 300px; 
       font-family: Arial, sans-serif;
       background-color: #222222;
       color: #1DCD9F;
@@ -37,7 +37,7 @@
       position: relative; /* Necesario para el pseudo-elemento */
     }
 
-    /* FONDO TRANSPARENTE - OPCIÓN 1 */
+    /* FONDO TRANSPARENTE  */
     body::before {
       content: "";
       position: fixed;
@@ -139,7 +139,7 @@
       position: relative;
       text-align: center;
       padding: 1rem;
-      background-color: rgba(34, 34, 34, 0.8); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.8); 
       margin-bottom: 1rem;
       animation: fadeIn 0.8s ease-out;
     }
@@ -169,7 +169,7 @@
       height: 400px;
       overflow: hidden;
       margin: 1rem 0;
-      background-color: rgba(34, 34, 34, 0.8); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.8); 
       animation: fadeIn 1s ease-out;
     }
     .slider .slide {
@@ -219,7 +219,7 @@
     
     /* SECCIÓN DE VIDEOS DESTACADOS */
     .video-section {
-      background-color: rgba(34, 34, 34, 0.8); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.8); 
       border: 2px solid #1DCD9F;
       padding: 2rem;
       margin: 1rem auto;
@@ -258,7 +258,7 @@
       top: 120px;
       right: 1rem;
       width: 250px;
-      background-color: rgba(34, 34, 34, 0.9); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.9);
       border: 2px solid #1DCD9F;
       color: #1DCD9F;
       padding: 1rem;
@@ -303,11 +303,11 @@
       z-index: 1;
     }
     .info-section:nth-of-type(odd) {
-      background-color: rgba(29, 205, 159, 0.9); /* Añadido transparencia */
+      background-color: rgba(29, 205, 159, 0.9); 
       color: #222222;
     }
     .info-section:nth-of-type(even) {
-      background-color: rgba(22, 153, 118, 0.9); /* Añadido transparencia */
+      background-color: rgba(22, 153, 118, 0.9); 
       color: #222222;
       flex-direction: row-reverse;
     }
@@ -327,7 +327,7 @@
     
     /* SECCIONES SECUNDARIAS */
     .secondary-section {
-      background-color: rgba(34, 34, 34, 0.85); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.85); 
       border: 2px solid #1DCD9F;
       color: #1DCD9F;
       padding: 2rem;
@@ -369,7 +369,7 @@
     
     /* SECCIÓN DE PRÓXIMOS TORNEOS */
     .torneos-section {
-      background-color: rgba(34, 34, 34, 0.85); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.85); 
       border: 2px solid #1DCD9F;
       padding: 2rem;
       margin: 1rem auto;
@@ -412,7 +412,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
     .card-front {
-      background-color: rgba(22, 153, 118, 0.95); /* Añadido transparencia */
+      background-color: rgba(22, 153, 118, 0.95); 
       color: #222222;
       display: flex;
       flex-direction: column;
@@ -434,7 +434,7 @@
       font-size: 1.2rem;
     }
     .card-back {
-      background-color: rgba(29, 205, 159, 0.95); /* Añadido transparencia */
+      background-color: rgba(29, 205, 159, 0.95); 
       color: #222222;
       padding: 1.5rem;
       transform: rotateY(180deg);
@@ -455,20 +455,20 @@
       display: inline-block;
       margin-top: 1.5rem;
       padding: 0.5rem 1rem;
-      background-color: rgba(34, 34, 34, 0.9); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.9); 
       color: #1DCD9F;
       text-decoration: none;
       border-radius: 5px;
       transition: all 0.3s ease;
     }
     .btn-mas-info:hover {
-      background-color: rgba(0, 0, 0, 0.9); /* Añadido transparencia */
+      background-color: rgba(0, 0, 0, 0.9); 
       transform: scale(1.05);
     }
     
     /* SECCIÓN DE CONTACTO */
     #contacto {
-      background-color: rgba(34, 34, 34, 0.85); /* Añadido transparencia */
+      background-color: rgba(34, 34, 34, 0.85); 
       border: 2px solid #1DCD9F;
       padding: 2rem;
       margin-bottom: 1rem;
@@ -496,7 +496,7 @@
     }
     #contacto button {
       padding: 0.7rem 1.5rem;
-      background: rgba(0, 0, 0, 0.9); /* Añadido transparencia */
+      background: rgba(0, 0, 0, 0.9); 
       color: #1DCD9F;
       border: none;
       border-radius: 4px;
@@ -504,12 +504,12 @@
       transition: background 0.3s ease;
     }
     #contacto button:hover {
-      background: rgba(22, 153, 118, 0.9); /* Añadido transparencia */
+      background: rgba(22, 153, 118, 0.9); 
     }
     
     /* FOOTER */
     footer {
-      background-color: rgba(0, 0, 0, 0.95); /* Añadido transparencia */
+      background-color: rgba(0, 0, 0, 0.95); 
       color: #1DCD9F;
       text-align: center;
       padding: 1.5rem;
@@ -520,7 +520,7 @@
     }
     footer .descripcion {
       margin-top: 1rem;
-      background: rgba(22, 153, 118, 0.9); /* Añadido transparencia */
+      background: rgba(22, 153, 118, 0.9); 
       padding: 1rem;
       color: #222;
     }
